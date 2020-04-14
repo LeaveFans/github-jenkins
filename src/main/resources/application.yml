@@ -1,0 +1,28 @@
+server:
+  port: 8085
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/mp_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123
+    druid:
+      initial-size: 10
+      max-active: 100
+      min-idle: 5
+      max-wait: 60000
+
+#mybatis-plus config
+mybatisPlus:
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  type-aliases-package: cn.lee.mpdemo.entity
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: ignored
+      table-underline: true
+    banner: false
+  configuration:
+    mapUnderscoreToCamelCase: true
+    cacheEnabled: false

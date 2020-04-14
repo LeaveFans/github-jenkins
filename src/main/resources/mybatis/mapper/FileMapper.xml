@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lee.mpdemo.mapper.FileMapper">
+
+    <resultMap id="BaseResultMap" type="cn.lee.mpdemo.entity.UploadFile">
+        <id column="fid" property="fid" />
+        <result column="file_name" property="fileName" />
+        <result column="file_path" property="filePath" />
+        <result column="created_time" property="createdTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <!--根据文件id查找文件名-->
+    <!--String selectFileNameById(Long fid);-->
+    <select id="selectFileNameById" resultType="String">
+        SELECT file_name FROM file WHERE fid=#{fid}
+    </select>
+
+    <!--根据文件名查找文件-->
+    <!--UploadFile selectFileByName(String fileName)-->
+    <select id="selectFileByName" resultMap="BaseResultMap">
+        SELECT * FROM file WHERE file_name=#{fileName}
+    </select>
+
+</mapper>
